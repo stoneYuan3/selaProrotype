@@ -1,11 +1,24 @@
 import logo from './logo.svg';
 import './App.css';
-import { NavMain } from './components/Navigation'
+import { NavMain,NavTools } from './components/Navigation'
 
-function App() {
+function App(props) {
+
+  var app;
+  var navTools;
+  if(props.page!=null){
+    if(props.page=="structure"){
+      navTools = <NavTools page={props.page}/>
+    }
+  }
+  else{
+    navTools=(<NavTools/>)
+  }
+
   return (
     <div className="App">
-      <NavMain/>
+      {/* <NavMain/> */}
+      {navTools}
     </div>
   );
 }

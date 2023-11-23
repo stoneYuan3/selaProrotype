@@ -1,9 +1,15 @@
 
-.navMain{
+.nav{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+}
+.navMain{
+    /* display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center; */
     background-color: #FFD966;
     padding:10px 0;
 }
@@ -75,4 +81,39 @@
     width: 55px;
     height: 55px;
     margin-right: 10px;
+}
+
+.navTools{
+    background-color: #EDF2FA;
+    padding:10px 0;
+}
+.navTools .basicTools,
+.navTools .basicTools div{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.navTools .basicTools{
+    margin-left:10px;
+}
+.navTools .basicTools div{
+    margin-right: 1rem;
+}
+.navTools .basicTools img{
+    height: 30px;
+    width: auto;
+    margin-right:1rem;
+}
+
+.navTools .stanzaEdit{
+    margin-right: 10px;
+}
+.navTools .stanzaEdit button{
+    background-color: #A3C3F5;
+    font-size: 1.25rem;
+    border-radius: 0.5rem;
+    padding:5px 10px;
+    border:none;
+    outline: none;
+    margin-left:5px;
 }
