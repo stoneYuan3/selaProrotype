@@ -3,6 +3,49 @@ import '../styles/nav.css'
 import { Link, Outlet } from "react-router-dom";
 import { useReducer } from "react";
 
+function setLang(currentPage,setPage){
+    switch(setPage){
+        case "ENG":
+            return {
+                eng:true,
+                heb:false,
+            };
+        case "HEB":
+            return {
+                eng:false,
+                heb:true,
+            };
+        default:
+            return currentPage;
+    }
+}
+const NavMainLang = () => {
+    // var langSet="ENG";
+    const initState = {
+        eng:true,
+        heb:false,
+    }
+    const [currentPage, setPage] = useReducer(setLang, initState);
+    function switchLang(lang){
+        setPage(lang);
+        if(lang=="ENG"){
+            console.log("ENG")
+        }
+        else{
+            console.log("HEB")
+        }
+    }
+    var langSwitch = (
+        <button className="lang" onClick={ () => { switchLang(currentPage.eng ? "HEB" : "ENG"); } }>
+            <p className={currentPage.eng ? "selected" : ""}>ENG</p>
+            <p className={currentPage.heb ? "selected" : ""}>HEB</p>
+        </button>
+    );
+
+    return langSwitch;
+}
+
+
 function setNavMainUI(currentPage,setPage){
     switch(setPage){
         case "default":
@@ -19,41 +62,6 @@ function setNavMainUI(currentPage,setPage){
             return currentPage;
     }
 }
-
-const NavMainLang = (props) => {
-    var langSwitch;
-    switch(props.lang){
-        case "ENG":
-            console.log('eng')
-            langSwitch = (
-                <Link className="lang" to="/HEB/">
-                    <p className="selected">ENG</p>
-                    <p className="">HEB</p>
-                </Link>
-            )
-            break;
-        case "HEB":
-            console.log('heb')
-            langSwitch = (
-                <Link className="lang" to="/">
-                    <p className="">ENG</p>
-                    <p className="selected">HEB</p>
-                </Link>
-            )
-            break;
-        default:
-            console.log('def')
-            langSwitch = (
-                <Link className="lang" to="/HEB">
-                    <p className="selected">ENG</p>
-                    <p className="">HEB</p>
-                </Link>
-            )
-            break;
-    }
-    return langSwitch;
-}
-
 export const NavMain = (props) => {
     var navStructure;
     var homelink;
