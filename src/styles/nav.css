@@ -77,6 +77,9 @@
     margin-right: 10px;
     background-color: white;
 }
+.navMain .navOptions .selected{
+    background-color: #A3C3F5;
+}
 .navMain .navOptions a:last-child{
     margin-right: 0;
 }
