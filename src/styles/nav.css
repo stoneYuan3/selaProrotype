@@ -33,15 +33,19 @@
     flex-direction: row;
     justify-content: space-between;
 }
-.navMain .lang a{
+.navMain .lang a,
+.navMain .lang p{
+    margin:0;
     padding:5px 15px;
     color:grey;
     background-color: grey;
 }
-.navMain .lang a:first-child{
+.navMain .lang a:first-child,
+.navMain .lang p:first-child{
     border-radius: 15px 0 0 15px;
 }
-.navMain .lang a:last-child{
+.navMain .lang a:last-child,
+.navMain .lang p:last-child{
     border-radius: 0 15px 15px 0;
 }
 .navMain .lang .selected{
@@ -95,6 +99,7 @@
 }
 .navTools .basicTools{
     margin-left:10px;
+    padding:5px 0;
 }
 .navTools .basicTools div{
     margin-right: 1rem;

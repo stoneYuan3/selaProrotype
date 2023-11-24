@@ -1,6 +1,24 @@
 
 import '../styles/nav.css'
 import { Link, Outlet } from "react-router-dom";
+import { useReducer } from "react";
+
+function setLangUI(currentPage,setPage){
+    switch(setPage){
+        case "ENG":
+            return {
+                ENG:true,
+                HEB:false,
+            };
+        case "HEB":
+            return {
+                ENG:false,
+                HEB:true,
+            };  
+        default:
+            return currentPage;
+    }
+}
 
 export const NavMain = (props) => {
     var navStructure;
@@ -11,16 +29,56 @@ export const NavMain = (props) => {
     else{
         homelink="/"
     }
+    var langSwitch;
+    switch(props.lang){
+        case "ENG":
+            console.log('eng')
+            langSwitch = (
+                <Link className="lang" to="/HEB">
+                    <p className="selected">ENG</p>
+                    <p className="">HEB</p>
+                </Link>
+            )
+            break;
+        case "HEB":
+            console.log('heb')
+            langSwitch = (
+                <Link className="lang" to="/">
+                    <p className="">ENG</p>
+                    <p className="selected">HEB</p>
+                </Link>
+            )
+            break;
+        default:
+            console.log('def')
+            langSwitch = (
+                <Link className="lang" to="/HEB">
+                    <p className="selected">ENG</p>
+                    <p className="">HEB</p>
+                </Link>
+            )
+            break;
+    }
+
+    // const initState = {
+    //     ENG:true,
+    //     HEB:false
+    // }
+    // const [currentLang, setPage] = useReducer(setLangUI, initState);
+
     navStructure=(
         <>
         <nav className="navMain nav">
             <div className="navGroupMain left">
-                <div className="lang">
-                    <Link to="/" className='selected'>ENG</Link>
-                    <Link to="/HEB" className=''>HEB</Link>
-                    {/* <a href="" className='selected'>ENG</a>
-                    <a href="">HEB</a> */}
-                </div>
+                {langSwitch}
+                {/* <Link 
+                    onClick={currentLang.ENG ? setLangUI("HEB") : setLangUI("ENG")} 
+                    className="lang" 
+                    to={currentLang.ENG ? "/HEB" : "/"}
+                >
+                    <p className={currentLang.ENG ? "selected" : ""}>ENG</p>
+                    <p className={currentLang.HEB ? "selected" : ""}>HEB</p>
+                </Link> */}
                 <div className="chapter">
                 {/* https://www.simplilearn.com/tutorials/reactjs-tutorial/how-to-create-functional-react-dropdown-menu */}
                     <select>
@@ -32,8 +90,6 @@ export const NavMain = (props) => {
                 <nav className="navOptions">
                     <Link to={homelink}>Default</Link>
                     <Link to="structure">Structure</Link>
-                    {/* <a href="">Default</a>
-                    <a href="">Structure</a> */}
                     <a href="">Motif</a>
                     <a href="">Syntax</a>
                     <a href="">Sounds</a>
@@ -48,6 +104,7 @@ export const NavMain = (props) => {
     )
     return navStructure;
 }
+
 
 export const NavTools = (props) => {
     //adjust right side buttons on the secondary nav based on which page the user is in

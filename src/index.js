@@ -19,12 +19,12 @@ root.render(
   // </React.StrictMode>
   <BrowserRouter>
     <Routes>
-      <Route path="/" element={<NavMain />}>
+      <Route path="/" element={<NavMain lang="ENG" />}>
         <Route index element={<App/>} />
         <Route path="structure" element={<App page="structure"/>} />
       </Route>
 
-      <Route path="/HEB" element={<NavMain homelink="/HEB"/>}>
+      <Route path="/HEB" element={<NavMain homelink="/HEB" lang="HEB"/>}>
         <Route index element={<App/>} />
         <Route path="structure" element={<App page="structure"/>} />
       </Route>
